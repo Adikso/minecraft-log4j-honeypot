@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"log"
 	"regexp"
 
@@ -31,7 +32,10 @@ func Analyse(text string) {
 }
 
 func main() {
-	server := minecraft.NewServer(":25565")
+	address := flag.String("h", ":25565", "Minecraft server binding address")
+	flag.Parse()
+
+	server := minecraft.NewServer(*address)
 	server.ChatMessageCallback = Analyse
 	server.AcceptLoginCallback = Analyse
 

@@ -37,6 +37,8 @@ func (s *Server) Run() error {
 		return fmt.Errorf("failed to open server socket: %v", err)
 	}
 
+	log.Printf("Waiting for connections on %s", s.Address)
+
 	for {
 		conn, err := listener.Accept()
 		if err != nil {
