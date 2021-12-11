@@ -173,6 +173,9 @@ func (s *Server) handshake(conn net.Conn) (protocol, intention int32, err error)
 		return
 	}
 	err = p.Scan(&Protocol, &ServerAddress, &ServerPort, &Intention)
+
+	log.Printf("Received handshake: %d %d %s:%d\n", protocol, intention, ServerAddress, ServerPort)
+
 	return int32(Protocol), int32(Intention), err
 }
 
