@@ -71,12 +71,14 @@ func FetchFromLdap(address *url.URL) ([]string, error) {
 		if class == "javaNamingReference" {
 			filename, err := DownloadPayload(entry)
 			if err != nil {
+				fmt.Printf("Failed to download payload: %v", err)
 				continue
 			}
 			files = append(files, filename)
 		} else {
 			filename, err := SaveDetails(entry)
 			if err != nil {
+				fmt.Printf("Failed to save payload: %v", err)
 				continue
 			}
 			files = append(files, filename)
