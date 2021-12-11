@@ -51,6 +51,9 @@ func (s *Server) Run() error {
 func (s *Server) acceptConn(conn net.Conn) {
 	defer conn.Close()
 
+	ipString := conn.Socket.RemoteAddr().String()
+	log.Printf("New connection from %s\n", ipString)
+
 	defer func() {
 		if err := recover(); err != nil {
 			log.Printf("catching panic: %v", err)
