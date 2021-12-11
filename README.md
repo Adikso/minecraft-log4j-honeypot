@@ -1,6 +1,6 @@
 # Minecraft Log4j Honeypot
 
-This honeypots runs fake Minecraft server (1.17.1) waiting to be exploited. Payload classes are saved to `payloads/` directory.
+This honeypots runs fake Minecraft server (1.16.5) waiting to be exploited. Payload classes are saved to `payloads/` directory.
 
 ## Requirements
 - Golang
