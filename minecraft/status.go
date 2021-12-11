@@ -51,7 +51,7 @@ func listResp() string {
 		FavIcon     string       `json:"favicon,omitempty"`
 	}
 
-	list.Version.Name = "Chat Server"
+	list.Version.Name = "1.17.1"
 	list.Version.Protocol = ProtocolVersion
 	list.Players.Max = MaxPlayer
 	list.Players.Online = 0
