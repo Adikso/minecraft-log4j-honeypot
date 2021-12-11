@@ -11,6 +11,7 @@ import (
 	"net/url"
 	"os"
 	"strings"
+	"time"
 )
 
 func DownloadPayload(entry *ldap.Entry) (string, error) {
@@ -105,7 +106,11 @@ func SaveDetails(entry *ldap.Entry) (string, error) {
 
 func DownloadFile(url *url.URL) (string, error) {
 	// Get the data
-	resp, err := http.Get(url.String())
+	client := http.Client{
+		Timeout: 5 * time.Second,
+	}
+
+	resp, err := client.Get(url.String())
 	if err != nil {
 		return "", err
 	}
