@@ -13,9 +13,9 @@ import (
 )
 
 const (
-	PlayerPositionAndLookClientbound = 0x38
-	JoinGame                         = 0x26
-	ProtocolVersion                  = 756
+	PlayerPositionAndLookClientbound = 0x34
+	JoinGame                         = 0x24
+	ProtocolVersion                  = 754
 	MaxPlayer                        = 50
 )
 
@@ -101,7 +101,6 @@ func (s *Server) handlePlaying(conn net.Conn, protocol int32) {
 		pk.Float(0), pk.Float(0), // Yaw Pitch
 		pk.Byte(0),        // flag
 		pk.VarInt(0),      // TP ID
-		pk.Boolean(false), // Dismount vehicle
 	)); err != nil {
 		log.Printf("Login failed on sending PlayerPositionAndLookClientbound: %v", err)
 		return

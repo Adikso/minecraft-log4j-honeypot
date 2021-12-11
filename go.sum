@@ -1,3 +1,5 @@
+github.com/Tnze/go-mc v1.16.5 h1:U7m0C6U2kLo6LAIjCA7I/MX1CiCEGSUMpg1Ozs8Bgf8=
+github.com/Tnze/go-mc v1.16.5/go.mod h1:t0AI38F1BEmmy8/uLhr9RCOUeDbBj3oUNQH9akjzMc0=
 github.com/Tnze/go-mc v1.17.1 h1:Dt5xBw3fPQTMIgH4831njCqF35YJ5k3tfw1H5p379UA=
 github.com/Tnze/go-mc v1.17.1/go.mod h1:t0AI38F1BEmmy8/uLhr9RCOUeDbBj3oUNQH9akjzMc0=
 github.com/go-ldap/ldap v3.0.3+incompatible h1:HTeSZO8hWMS1Rgb2Ziku6b8a7qRIZZMHjsvuZyatzwk=
