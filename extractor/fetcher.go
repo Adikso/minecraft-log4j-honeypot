@@ -1,10 +1,12 @@
 package extractor
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/go-ldap/ldap"
 	"github.com/google/uuid"
 	"io"
+	"io/ioutil"
 	"net/http"
 	"net/url"
 	"os"
@@ -63,15 +65,42 @@ func FetchFromLdap(address *url.URL) ([]string, error) {
 
 	files := []string{}
 	for _, entry := range sr.Entries {
-		filename, err := DownloadPayload(entry)
-		if err != nil {
-			continue
-		}
+		class := entry.GetAttributeValue("objectClass")
 
-		files = append(files, filename)
+		if class == "javaNamingReference" {
+			filename, err := DownloadPayload(entry)
+			if err != nil {
+				continue
+			}
+			files = append(files, filename)
+		} else {
+			filename, err := SaveDetails(entry)
+			if err != nil {
+				continue
+			}
+			files = append(files, filename)
+		}
 	}
 
 	return files, nil
+}
+
+func SaveDetails(entry *ldap.Entry) (string, error) {
+	filename := uuid.New().String() + ".json"
+
+	err := os.MkdirAll("payloads/", os.ModePerm)
+	if err != nil {
+		return "", err
+	}
+
+	file, _ := json.MarshalIndent(entry, "", " ")
+
+	err = ioutil.WriteFile("payloads/" + filename, file, 0644)
+	if err != nil {
+		return "", err
+	}
+
+	return filename, nil
 }
 
 func DownloadFile(url *url.URL) (string, error) {
