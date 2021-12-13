@@ -3,7 +3,7 @@
 This honeypots runs fake Minecraft server (1.7.2 - 1.16.5 without snapshots) waiting to be exploited. Payload classes are saved to `payloads/` directory.
 
 ## Requirements
-- Golang
+- Golang 1.16+
 
 ## Running
 
