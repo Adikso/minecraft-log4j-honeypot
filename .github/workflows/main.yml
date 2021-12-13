@@ -1,7 +1,7 @@
 name: CI
 
 on:
-  workflow_dispatch:
+  pull_request:
   push:
     branches: [ master ]
 
@@ -22,7 +22,7 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          push: true
+          push: ${{ github.ref == 'refs/heads/master' }}
           tags: adikso/minecraft-log4j-honeypot:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
