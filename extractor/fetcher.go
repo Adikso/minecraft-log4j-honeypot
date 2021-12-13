@@ -54,7 +54,7 @@ func FetchFromLdap(address *url.URL) ([]string, error) {
 		strings.TrimLeft(address.Path, "/"),
 		ldap.ScopeBaseObject, ldap.DerefAlways, 0, 0, false,
 		"(objectClass=*)",
-		[]string{"javaClassName", "javaCodeBase", "objectClass", "javaFactory"},
+		[]string{},
 		[]ldap.Control{
 			&ldap.ControlManageDsaIT{},
 		},
